@@ -1,0 +1,97 @@
+{
+  "projectType": "application",
+  "root": "apps/online-store",
+  "sourceRoot": "apps/online-store/src",
+  "prefix": "online-store",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/online-store",
+        "index": "apps/online-store/src/index.html",
+        "main": "apps/online-store/src/main.ts",
+        "polyfills": "apps/online-store/src/polyfills.ts",
+        "tsConfig": "apps/online-store/tsconfig.app.json",
+        "inlineStyleLanguage": "less",
+        "assets": [
+          "apps/online-store/src/favicon.ico",
+          "apps/online-store/src/assets"
+        ],
+        "styles": ["apps/online-store/src/styles.less"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/online-store/src/environments/environment.ts",
+              "with": "apps/online-store/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "online-store:build:production"
+        },
+        "development": {
+          "browserTarget": "online-store:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "proxyConfig": "apps/online-store/proxy.conf.json"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "online-store:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/online-store/src/**/*.ts",
+          "apps/online-store/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/online-store"],
+      "options": {
+        "jestConfig": "apps/online-store/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

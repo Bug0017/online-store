@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "projects": {
+    "api": "apps/api",
+    "api-interfaces": "libs/api-interfaces",
+    "online-store": "apps/online-store",
+    "online-store-e2e": "apps/online-store-e2e"
+  }
+}
