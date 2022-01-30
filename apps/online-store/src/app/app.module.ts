@@ -2,12 +2,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
 import { HttpClientModule } from '@angular/common/http';
 
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { CommonModule } from '@angular/common';
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent],
-  imports: [BrowserModule, HttpClientModule],
+  declarations: [AppComponent],
+  imports: [CommonModule, BrowserModule, HttpClientModule, NzButtonModule],
   providers: [],
   bootstrap: [AppComponent],
 })
